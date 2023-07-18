@@ -1,0 +1,24 @@
+{
+	"name": "cmdrsearchlimpetv2",
+	"version": "2.0.0",
+	"description": "calls inara API for cmdr data",
+	"main": "src/index.js",
+	"author": "Sam 'Fix' White",
+	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/SuperWhiteNoise/cmdrSearchLimpetv2.git"
+	},
+	"dependencies": {
+		"discord.js": "^14.11.0",
+		"node-fetch": "^2.6.11",
+		"sqlite3": "^5.1.6"
+	},
+	"bugs": {
+		"url": "https://github.com/SuperWhiteNoise/cmdrSearchLimpetv2/issues"
+	},
+	"homepage": "https://github.com/SuperWhiteNoise/cmdrSearchLimpetv2#readme",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	}
+}
