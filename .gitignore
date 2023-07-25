@@ -1,0 +1,5 @@
+node_modules
+config.json
+example.json
+notes.test
+sqlite3.exe //only required for running sqlite3 on windows

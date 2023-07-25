@@ -65,6 +65,10 @@ class inara {
 					return message;
 				} else if (await inaraStatus == 202) { //handle when partial results are returned
 					if (inaraData.hasOwnProperty('commanderSquadron')) {
+						let formattedName = await inaraData.userName.toLowerCase();
+						await sql.wrapperInsert(`INSERT OR IGNORE INTO lookup (name,status) VALUES ("${formattedName}",0);`);
+						let rawStatus = await sql.wrapperSelect(`SELECT status FROM lookup WHERE name = "${formattedName}"`);
+						let parsedStatus = await this.getStatus(await rawStatus[0].status);
 						const message = new EmbedBuilder()
 							.setColor('#eb9c34')
 							.setTitle(`CMDR Partial Match Found`)
@@ -72,29 +76,32 @@ class inara {
 							.setDescription(`Search Limpet found "${cmdrName}" as:\n[${inaraData.userName}](${inaraData.inaraURL})`)
 							.addFields(
 								{ name: `${inaraData.commanderSquadron.squadronMemberRank}`, value: `[${inaraData.commanderSquadron.squadronName}](${inaraData.commanderSquadron.inaraURL})` },
+								{ name: `Palcon Internal Status:`, value: `${parsedStatus}` },
 								{ name: `CMDRs with similar handles found: `, value: `${inaraData.otherNamesFound}` },
 								{ name: `source: `, value: `[inara](https://inara.cz/)` }
 							)
-						let formattedName = inaraData.userName.toLowerCase();
-						await sql.wrapperInsert(`INSERT OR IGNORE INTO lookup (name,status) VALUES ("${formattedName}",0);`);
 						return message;
 					} else {
+						let formattedName = await inaraData.userName.toLowerCase();
+						await sql.wrapperInsert(`INSERT OR IGNORE INTO lookup (name,status) VALUES ("${formattedName}",0);`);
+						let rawStatus = await sql.wrapperSelect(`SELECT status FROM lookup WHERE name = "${formattedName}"`);
+						let parsedStatus = await this.getStatus(await rawStatus[0].status);
 						const message = new EmbedBuilder()
 							.setColor('#eb9c34')
 							.setTitle(`CMDR Partial Match Found`)
 							.setDescription(`Search Limpet found "${cmdrName}" as:\n[${inaraData.userName}](${inaraData.inaraURL})`)
 							.addFields(
 								{ name: `CMDRs with similar handles found: `, value: `${inaraData.otherNamesFound}` },
+								{ name: `Palcon Internal Status:`, value: `${parsedStatus}` },
 								{ name: `source: `, value: `[inara](https://inara.cz/)` }
 							)
-						let formattedName = inaraData.userName.toLowerCase();
 						await sql.wrapperInsert(`INSERT OR IGNORE INTO lookup (name,status) VALUES ("${formattedName}",0);`);
 						return message;
 					}
 				} else if (await inaraStatus == 200) { //handle when match is returned
-					let formattedName = inaraData.userName.toLowerCase();
-					await sql.wrapperInsert(`INSERT OR IGNORE INTO lookup (name,status) VALUES ("${await formattedName}",0);`);
-					let rawStatus = await sql.wrapperSelect(`SELECT status FROM lookup WHERE name = "${await formattedName}"`);
+					let formattedName = await inaraData.userName.toLowerCase();
+					await sql.wrapperInsert(`INSERT OR IGNORE INTO lookup (name,status) VALUES ("${formattedName}",0);`);
+					let rawStatus = await sql.wrapperSelect(`SELECT status FROM lookup WHERE name = "${formattedName}"`);
 					let parsedStatus = await this.getStatus(await rawStatus[0].status);
 					if (inaraData.hasOwnProperty('commanderSquadron')) {
 						const message = new EmbedBuilder()

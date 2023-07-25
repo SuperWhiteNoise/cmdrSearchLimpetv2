@@ -11,6 +11,18 @@ This code allows you to have a Discord bot lookup CMDR names for the game Elite 
 Palcon
 Dan De Lion (Palcon) - hosting
 
+## Example lookups; 
+When you perform a lookup on INARA, there are 3 main codes returned;
+`200 - match || 202 - partial match || 204 - not found || Anything else is an error`
+
+#### CMDR handle - code
+HENFETHER - `200` (has squad)
+SuperFixxxeR - `200` (has squad)
+colinhype - `202` (partial)
+colinhype1 - `204` (not found)
+KOBATO - `200` (no squad)
+Viscera - `200` (has squad)
+
 ## Colours
 `#eb3449` - red / something wrong
 `#34ebb4` - green / help
@@ -53,34 +65,3 @@ How it works;
   - `!kos <cmdr>` - Kill on sight
   - `!un <cmdr>` - the default value for any cmdr found by Inara
 
-### Ideas / the future
-- roasts system
-- quick credit / bounty tracker (self managed)
-
-### Testing - Test notes
-#### Command - Expected Result:
-h - shows help													- PASS
-j - tells a joke												- PASS
-w name - correctly looks up inara								- PASS
-w name - correctly looks up inara links to internal db			- PASS
-w - blank look up attempt										- PASS
-w invalid name - bad lookup attempt								- PASS
-w partially matched name - partial lookup attempt				- PASS
-w partially matched name - links to internal db					- PASS
-s name - correctly looks up internal db							- PASS
-s - blank look up attempt										- PASS
-s invalid name - bad lookup attempt								- PASS
-fr name - sets friend											- PASS
-fr - blank request												- PASS
-foe name - sets foe												- PASS
-foe - blank request												- PASS
-kos name - sets kos												- PASS
-kos - blank request												- PASS
-un name - sets unknown											- PASS
-un - blank request												- PASS
-^ test changing a name from one state to another etc
-
-### What I don't know
-- How long the database lasts (I presume forever, as it's a physical file)
-- How big the database can get, and what performance issues may arise from larger database lookups
-- If this (namely, sqlite wrapper and sqlite3) will run on Windows (probably, yes)

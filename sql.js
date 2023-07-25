@@ -5,6 +5,15 @@ const db = new sqlite3.Database("./db.db", sqlite3.OPEN_READWRITE, (err) => {
 	if (err) return console.error(err.message);
 });
 
+//table information
+//only 1 table exists 'lookup'
+//lookup contains two fields - name || status - the NAME field is unique, if inserting into this table remember to use 'INSERT OR IGNORE INTO'
+//all names stored are the cmdr name toLowerCase
+//status are - 0 unknown || 1 friend || 2 foe || 3 kos
+//when a 200/202 happens from inara search, limpet will log the name and assume unknown status (0)
+//a user can update a status for a name using commands; !fr / !foe / !kos / !un
+//there are no destructive actions available to the user
+
 class SQL {
 
 	//create the db table, if it doesn't exist

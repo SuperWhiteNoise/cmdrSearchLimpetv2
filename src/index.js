@@ -140,6 +140,13 @@ client.on('messageCreate', async (message) => { //commands section
 		}
 	}
 
+	if (message.content == `${config.prefix}d`) { //temp command
+		//await sql.tableDefaults();
+		//await sql.massDelete();
+		//await sql.dropTable();
+		//await sql.wrapperInsert(`INSERT OR IGNORE INTO lookup (name,status) VALUES ("enemy",2);`)
+	}
+
 });
 
 client.login(config.token);
