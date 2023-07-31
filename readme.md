@@ -11,23 +11,11 @@ This code allows you to have a Discord bot lookup CMDR names for the game Elite 
 Palcon
 Dan De Lion (Palcon) - hosting
 
-## Example lookups; 
-When you perform a lookup on INARA, there are 3 main codes returned;
-`200 - match || 202 - partial match || 204 - not found || Anything else is an error`
-
-#### CMDR handle - code
-HENFETHER - `200` (has squad)
-SuperFixxxeR - `200` (has squad)
-colinhype - `202` (partial)
-colinhype1 - `204` (not found)
-KOBATO - `200` (no squad)
-Viscera - `200` (has squad)
-
 ## Colours
-`#eb3449` - red / something wrong
-`#34ebb4` - green / help
-`#eb9c34` - orange / partial
-`#0388fc` - blue / sql
+- `#eb3449` - red / something wrong
+- `#34ebb4` - green / help
+- `#eb9c34` - orange / partial
+- `#0388fc` - blue / sql
 
 ### Resources
 https://inara.cz/inara-api/
@@ -64,4 +52,5 @@ How it works;
   - `!foe <cmdr>` - regard as foe
   - `!kos <cmdr>` - Kill on sight
   - `!un <cmdr>` - the default value for any cmdr found by Inara
-
+- Improved security features - where the role of 'Paladin' is looked for when updating internal SQL records
+- Added new fields to the lookup internal table so we know when a record was updated and by whom

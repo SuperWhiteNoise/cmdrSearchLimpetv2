@@ -90,38 +90,41 @@ class utils {
 		return message;
 	}
 
-	async friendCmdr(name) { //for when a user looks up a name from the internal database
+	async friendCmdr(name, by, when) { //for when a user looks up a name from the internal database
 		const message = new EmbedBuilder()
 			.setColor('#34ebb4')
 			.setTitle(`CMDR ${name}`)
 			.setThumbnail(limpetImage)
 			.setDescription(`${name} is considered a friend.`)
 			.addFields(
-				{ name: `Directive:`, value: `o7` }
+				{ name: `Directive:`, value: `o7` },
+				{ name: `Last updated:`, value: `${when} by ${by}` }
 			)
 		return message;
 	}
 
-	async foeCmdr(name) { //for when a user looks up a name from the internal database
+	async foeCmdr(name, by, when) { //for when a user looks up a name from the internal database
 		const message = new EmbedBuilder()
 			.setColor('#eb9c34')
 			.setTitle(`CMDR ${name}`)
 			.setThumbnail(limpetImage)
 			.setDescription(`${name} is considered a foe.`)
 			.addFields(
-				{ name: `Directive:`, value: `Observe.\nReturn fire if attacked.` }
+				{ name: `Directive:`, value: `Observe.\nReturn fire if attacked.` },
+				{ name: `Last updated:`, value: `${when} by ${by}` }
 			)
 		return message;
 	}
 
-	async kosCmdr(name) { //for when a user looks up a name from the internal database
+	async kosCmdr(name, by, when) { //for when a user looks up a name from the internal database
 		const message = new EmbedBuilder()
 			.setColor('#eb3449')
 			.setTitle(`CMDR ${name}`)
 			.setThumbnail(limpetImage)
 			.setDescription(`${name} is considered an immediate threat.`)
 			.addFields(
-				{ name: `Directive:`, value: `💥 Engage.\nKill on sight!` }
+				{ name: `Directive:`, value: `💥 Engage.\nKill on sight!` },
+				{ name: `Last updated:`, value: `${when} by ${by}` }
 			)
 		return message;
 	}
