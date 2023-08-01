@@ -22,10 +22,6 @@ client.on('ready', async (c) => { //login the bot
 
 client.on('messageCreate', async (message) => { //commands section
 
-	if (message.content == `${config.prefix}o`) { //temp
-		await sql.runAdhoc(`DROP TABLE lookup;`);
-	}
-
 	if (message.content == `${config.prefix}h`) { //help command
 		console.log(`${date} ${message.author.username} used the help command`);
 		const help = await utils.getHelp();
