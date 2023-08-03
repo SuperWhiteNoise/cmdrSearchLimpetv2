@@ -4,6 +4,7 @@ const utils = require("../utils");
 const inara = require("../inara");
 const sql = require("../sql");
 const date = new Date().toISOString();
+const limpetComebacks = require("./limpetComebacks.json");
 
 sql.createDB(); //creates the sqlite3 db
 
@@ -32,6 +33,11 @@ client.on('messageCreate', async (message) => { //commands section
 		console.log(`${date} ${message.author.username} used the joke command`);
 		const joke = await utils.getRandomJoke();
 		message.reply(joke);
+	}
+
+	if (limpetComebacks[message.content]) { //this needs a rework
+		console.log(`I came up with a witty comeback to ${message.author.username}'s comment`);
+		message.channel.send(limpetComebacks[message.content]);
 	}
 
 	if (message.content.startsWith(`${config.prefix}w`)) { //inara lookup

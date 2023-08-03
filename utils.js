@@ -18,10 +18,10 @@ class utils {
 				{ name: `INARA CMDR lookup`, value: `${config.prefix}w <cmdr name> : I will look up CMDRs on INARA` },
 				{ name: `\u200B`, value: `\u200B` },
 				{ name: `Internal CMDR lookup`, value: `${config.prefix}s <cmdr name> : I will look up CMDRs in my internal database` },
-				{ name: `-Internal Database Commmands-`, value: ` ` },
-				{ name: `set friend status`, value: `${config.prefix}fr <cmdr name> : set that cmdr as a friend`, inline: true },
-				{ name: `set foe status`, value: `${config.prefix}foe <cmdr name> : set that cmdr as a foe`, inline: true },
-				{ name: `set kos status`, value: `${config.prefix}kos <cmdr name> : set that cmdr as kill on sight`, inline: true },
+				{ name: `- Internal Database Commmands : Paladin Level Access Required -`, value: ` ` },
+				{ name: `set friend status`, value: `${config.prefix}fr <cmdr name> : set that cmdr as friend status`, inline: true },
+				{ name: `set foe status`, value: `${config.prefix}foe <cmdr name> : set that cmdr as foe status`, inline: true },
+				{ name: `set kos status`, value: `${config.prefix}kos <cmdr name> : order kill on sight for this cmdr`, inline: true },
 				{ name: `\u200B`, value: `\u200B` },
 				{ name: `Want a joke?`, value: `${config.prefix}j : A random joke` }
 			)

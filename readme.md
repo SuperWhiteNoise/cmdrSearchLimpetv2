@@ -28,6 +28,7 @@ https://www.youtube.com/watch?v=ZRYn6tgnEgM - sqlite
 - Abstracted functions to keep main entry point as clean as possible
 - Improved / simplified logging
 - Improved help command - !h
+- Added limpet 'comebacks' as per v1, with some additions
 
 ### New Features
 - Avatars. See INARA section for details.
@@ -52,5 +53,5 @@ How it works;
   - `!foe <cmdr>` - regard as foe
   - `!kos <cmdr>` - Kill on sight
   - `!un <cmdr>` - the default value for any cmdr found by Inara
-- Improved security features - where the role of 'Paladin' is looked for when updating internal SQL records
+- Improved security features - where a user has the role of 'Paladin' they are able to update internal SQL records, users without this role are denied request
 - Added new fields to the lookup internal table so we know when a record was updated and by whom
