@@ -113,9 +113,15 @@ client.on('messageCreate', async (message) => { //commands section
 			if (updateName.length == 0) {
 				message.reply(`I need a cmdr name for that command to work.\neg; !fr <cmdr_name>`)
 			} else {
-				console.log(`${date} ${message.author.username} updated ${updateName} to state: friend(1)`);
-				await sql.wrapperUpdate(`UPDATE lookup SET status = 1, by = '${currentUser}', datetime = ${currentTime} WHERE name = "${updateName}"`);
-				message.reply(`Internal record updated for ${updateName}.\nStatus: Friend o7`);
+				let searchedCmdrStatus = await sql.wrapperSelect(`SELECT status FROM lookup WHERE name = "${updateName}"`);
+				if (searchedCmdrStatus.length == 0) {
+					const returnMessage = await utils.notFoundCmdr(updateName);
+					message.reply({ embeds: [returnMessage] });
+				} else {
+					console.log(`${date} ${message.author.username} updated ${updateName} to state: friend(1)`);
+					await sql.wrapperUpdate(`UPDATE lookup SET status = 1, by = '${currentUser}', datetime = ${currentTime} WHERE name = "${updateName}"`);
+					message.reply(`Internal record updated for ${updateName}.\nStatus: Friend o7`);
+				}
 			}
 		} else {
 			message.reply(`Sorry, only Paladins are able to update internal records.`);
@@ -132,9 +138,15 @@ client.on('messageCreate', async (message) => { //commands section
 			if (updateName.length == 0) {
 				message.reply(`I need a cmdr name for that command to work.\neg; !foe <cmdr_name>`)
 			} else {
-				console.log(`${date} ${message.author.username} updated ${updateName} to state: foe(2)`);
-				await sql.wrapperUpdate(`UPDATE lookup SET status = 2, by = '${currentUser}', datetime = ${currentTime} WHERE name = "${updateName}"`);
-				message.reply(`Internal record updated for ${updateName}.\nStatus: Foe`);
+				let searchedCmdrStatus = await sql.wrapperSelect(`SELECT status FROM lookup WHERE name = "${updateName}"`);
+				if (searchedCmdrStatus.length == 0) {
+					const returnMessage = await utils.notFoundCmdr(updateName);
+					message.reply({ embeds: [returnMessage] });
+				} else {
+					console.log(`${date} ${message.author.username} updated ${updateName} to state: foe(2)`);
+					await sql.wrapperUpdate(`UPDATE lookup SET status = 2, by = '${currentUser}', datetime = ${currentTime} WHERE name = "${updateName}"`);
+					message.reply(`Internal record updated for ${updateName}.\nStatus: Foe`);
+				}
 			}
 		} else {
 			message.reply(`Sorry, only Paladins are able to update internal records.`);
@@ -151,14 +163,14 @@ client.on('messageCreate', async (message) => { //commands section
 			if (updateName.length == 0) {
 				message.reply(`I need a cmdr name for that command to work.\neg; !kos <cmdr_name>`)
 			} else {
-				console.log(`${date} ${message.author.username} updated ${updateName} to state: kos(3)`);
-				const doTheyExist = await sql.wrapperSelect(`SELECT name FROM lookup WHERE name = "${updateName}"`);
-				//this is not working
-				if (await doTheyExist !== null) {
+				let searchedCmdrStatus = await sql.wrapperSelect(`SELECT status FROM lookup WHERE name = "${updateName}"`);
+				if (searchedCmdrStatus.length == 0) {
+					const returnMessage = await utils.notFoundCmdr(updateName);
+					message.reply({ embeds: [returnMessage] });
+				} else {
+					console.log(`${date} ${message.author.username} updated ${updateName} to state: kos(3)`);
 					await sql.wrapperUpdate(`UPDATE lookup SET status = 3, by = '${currentUser}', datetime = ${currentTime} WHERE name = "${updateName}"`);
 					message.reply(`💥 Kill on sight order issued for ${updateName}.`);
-				} else {
-					message.reply(`${updateName} does not exist in my database.`);
 				}
 			}
 		} else {
@@ -176,9 +188,15 @@ client.on('messageCreate', async (message) => { //commands section
 			if (updateName.length == 0) {
 				message.reply(`I need a cmdr name for that command to work.\neg; !un <cmdr_name>`)
 			} else {
-				console.log(`${date} ${message.author.username} updated ${updateName} to state: unknown(0)`);
-				await sql.wrapperUpdate(`UPDATE lookup SET status = 0, by = '${currentUser}', datetime = ${currentTime} WHERE name = "${updateName}"`);
-				message.reply(`Internal record updated for ${updateName}.\nStatus: Unknown`);
+				let searchedCmdrStatus = await sql.wrapperSelect(`SELECT status FROM lookup WHERE name = "${updateName}"`);
+				if (searchedCmdrStatus.length == 0) {
+					const returnMessage = await utils.notFoundCmdr(updateName);
+					message.reply({ embeds: [returnMessage] });
+				} else {
+					console.log(`${date} ${message.author.username} updated ${updateName} to state: unknown(0)`);
+					await sql.wrapperUpdate(`UPDATE lookup SET status = 0, by = '${currentUser}', datetime = ${currentTime} WHERE name = "${updateName}"`);
+					message.reply(`Internal record updated for ${updateName}.\nStatus: Unknown`);
+				}
 			}
 		} else {
 			message.reply(`Sorry, only Paladins are able to update internal records.`);
