@@ -7,6 +7,22 @@ I took what I learned from that original project and decided to re-write it, and
 
 This code allows you to have a Discord bot lookup CMDR names for the game Elite Dangerous on INARA.
 
+## Running the bot
+- Clone this repo
+- Create a `config.json` containing the following;
+```
+{
+    "token": "???", //Your super secret token for your discord bot
+    "prefix": "!", //Recommend don't change, but the prefix can be whatever you want. Its usually ! or . - eg !command.
+    "appName": "your app name", //The app name given to Artie at INARA for the API access
+    "commanderName": "CMDR Saltmine", //Your INARA commander name
+    "inaraURL": "https://www.url.com", //INARAs API URL
+    "inaraAPIkey": "???" //Your generic API key provided by INARA
+}
+```
+- Windows; You can use `pm2` by running `pm2 start src/index.js`
+- Mac/Windows you can also run the bot using `nodemon`
+
 ## Special thanks to
 Palcon
 Dan De Lion (Palcon) - hosting
